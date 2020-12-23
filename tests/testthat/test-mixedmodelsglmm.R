@@ -52,7 +52,7 @@ context("Generalized Linear Mixed Models")
                                                                                   ))), value = "facFive"))
   options$randomVariables <- "facFive"
   options$seed <- 1
-  options$setSeed <- FALSE
+  options$setSeed <- TRUE
   options$showFE <- TRUE
   options$showRE <- TRUE
   options$test_intercept <- FALSE
