@@ -92,8 +92,20 @@ context("Linear Mixed Models")
   results <- jaspTools::runAnalysis("MixedModelsLMM", "debug", options)
   
   
+
+  table <- results[["results"]][["ANOVAsummary"]][["data"]]
+  tb <- matrix(unlist(table), length(table), byrow = TRUE)
+  colnames(tb) <- names(table[[1]])
+  tb <- tb[, c("effect", "df", "stat", "pval", "pvalVS")]
+  print(tb)
+
   test_that("ANOVA Summary table results match", {
     table <- results[["results"]][["ANOVAsummary"]][["data"]]
+    tb <- matrix(unlist(table), length(table), byrow = TRUE)
+    colnames(tb) <- names(table[[1]])
+    tb <- tb[, c("effect", "df", "stat", "pval", "pvalVS")]
+    print(tb)
+    cbind(sapply(table, `[[`, "effect"), sapply(table, `[[`, "df"))
     expect_equal_tables(table,
                         list("1, 3.99", "contGamma", 0.733432779525737, 1, 0.133446135293009,
                              "1, 61.47", "contBinom", 0.768257135731431, 1, 0.0875931016397921,
