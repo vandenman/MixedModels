@@ -98,6 +98,9 @@ context("Linear Mixed Models")
   colnames(tb) <- names(table[[1]])
   tb <- tb[, c("effect", "df", "stat", "pval", "pvalVS")]
   print(tb)
+  print(afex::afex_options())
+  print(options())
+  print(options("contrasts"))
 
   test_that("ANOVA Summary table results match", {
     table <- results[["results"]][["ANOVAsummary"]][["data"]]
